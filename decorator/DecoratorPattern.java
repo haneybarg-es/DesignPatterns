@@ -93,7 +93,7 @@ class ZipChannel extends ChannelDecorator{ // concrete decorator C
 public class DecoratorPattern {
     public static void main( String[] args ) {
         I[] array = {new BufferChannel(new TPCChannel("lala")), new LoggerChannel(new BufferChannel(new TPCChannel("kaka"))),
-                new ZipChannel(new LoggerChannel(new BufferChannel(new TPCChannel("hihi"))))};
+                new ZipChannel(new LoggerChannel(new BufferChannel(new UPDChannel("hihi"))))};
 
         for (I anArray : array) {
             anArray.doIt();
