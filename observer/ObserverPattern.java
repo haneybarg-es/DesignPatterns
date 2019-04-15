@@ -14,7 +14,7 @@ public class Subject {
   public void removeObserver(Observer observer) {
     observers.remove(observer);
   }
-  
+
   public void notifyObservers() {
     Iterator it = observers.iterator();
     while (it.hasNext()) {
@@ -41,3 +41,20 @@ public class TermometerCelsius implements Observer  {
     System.out.println("Celsius: " + value);
   }
 }
+
+public class TermometerFahrenheit implements Observer {
+  public void update(Subject s) {
+    double value = 1.8 * ((Temperature) s).getValue() + 32;
+    System.out.println("Fahrenheit: " + value);
+  }
+}
+
+public class TesteTemperature {
+  public static void main(String[] args) {
+    Temperature t = new Temperature(10);
+    t.addObserver(new TermometerCelsius ());
+    t.addObserver(new TermometerFahrenheit ());
+    t.setValue(100);
+  }
+}
+
